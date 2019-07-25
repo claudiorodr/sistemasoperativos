@@ -1,0 +1,80 @@
+@@UTILIZADOR@@
+- Cada utilizador vai ser uma thread
+- Os utilizadores vão estar em semáforos
+
+@@SIMULADOR@@
+- Gerar aleatoriamente a chegada de utilizadores e as suas ações
+- Envia mensagens para o Monitor com comunicação via sockets
+- Tempo médio de chegada dos utilizadores (gerado aleatoriamente)
+- Outros tempos gerados aleatoriamente
+
+@@MONITOR@@
+- Aceita ligação com o simulador
+- Guarda todos os registos das ações num ficheiro (relatório)
+- Tratamento de dados
+	- Cálculo de tempos de espera médios
+	- Cálculo do número de carros ótimo
+	- (...)
+
+==========================================================================
+==========================================================================
+==========================================================================
+
+**SIMULADOR.CONF**
+- Probabilidade de desistência nas filas
+- Tempo de simulação
+- ...
+
+**MONITOR.CONF**
+- Regras
+- Limites
+- Constantes
+
+**COMUNICACAO.C**
+- Métodos:
+	- (métodos de comunicação)
+
+**SEMAFORO.C**
+- Métodos:
+	- (métodos de semáforo, de mutex e de wtv)
+
+**UTILIZADOR.H**
+- Estruturas:
+	- Utilizador
+		- Atributos:
+			- id
+			- Faixa etária (1-crianças; 2-adultos; 3-idosos; 4-grávidas)
+			- Número de bilhetes
+			- Familia_ID ( 0 - no familia e quando é da mesma familia têm o mesmo id)
+
+**UTILIZADOR.C**
+- Métodos:
+	- criarUtilizador()/entrarNoParque()
+		- cicloUtilizadorAgir() <<< THREAD (contínua)
+	- comprarBilhete(Utilizador u, int nr_bilhetes_comprados)
+	- apagarUtilizador(Utilizador u)/sairDoParque(Utilizador u)
+	- passarBilhete(Utilizador u_orig, Utilizador u_dest)
+	- usarBilhete(Utilizador u)
+
+**SIMULADOR.C**
+- Métodos:
+	- gerarUtilizadores() (ciclo infinito) <<< THREAD (contínua)
+	- gerarTempos()
+	- mandarParaOMonitor()
+
+**MONITOR.C**
+- Atributos:
+	- Número de utilizadores (questões de atribuições de id-kinda autoincrement)
+	- Lista ligada com todos os utilizadores atuais
+	- Semáforo de guiché-compra
+	- Semáforo de guiché-devolução
+	- Semáforo para a montanha-russa
+		- Semáforo para cada carro
+- Métodos:
+	- inserirNoSemaforo(Utilizador u, Semaforo s)
+	- removerDoSemaforo(Utilizador u, Semaforo s)
+	- (métodos de receção de informação da comunicação) <<< THREAD (contínua)
+	- Guardar num ficheiro-relatório <<< THREAD (contínua)
+	- (métodos de tratamento de dados-ex.:cálculo do tempo médio de espera, nº ótimo de carros) 
+
+

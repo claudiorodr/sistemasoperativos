@@ -1,0 +1,58 @@
+﻿### EVENTOS ###
+Evento 1 - X entrou do parque
+
+Evento 2 - X entrou na fila do guiché para comprar bilhetes
+Evento 3 - X saiu da fila do guiché para comprar bilhetes
+
+Evento 4 - X chegou à frente do guiché 
+Evento 5 - X comprou bilhete
+Evento 6 - X não comprou bilhete
+
+Evento 7 - X entrou na fila do guiché para devoluções
+Evento 8 - X saiu da fila do guiché para devoluções
+
+Evento 9 - É devolvido o valor do(s) bilhete(s) ao X
+
+Evento 10 - X entrou na fila dos carros
+Evento 11 - X saiu da fila dos carros
+
+Evento 12 - X chegou ao carro e entrou nele
+Evento 13 - X acabou o percurso da montanha-russa e saiu do carro
+Evento 14 - X saiu do parque
+
+### REGRAS/LIMITES ###
+Nº de carros na montanha-russa = 5 carros
+Capacidade de cada carro = 4 pessoas
+Número mínimo de pessoas para a montanha russa andar = 10 pessoas
+Tempo de viagem (até 30 pessoas) = 8 minutos
+Tempo de viagem (mais de 30 pessoas) = 5 minutos
+Tempo de espera depois de ter recebido 10 pessoas (o mínimo) = 2 minutos
+
+### FILAS ###
+Fila do guiché (compra)
+    - Fila única (um de cada vez)
+    - Prioridades: Grávidas -> Idosos -> Normais
+
+Fila do guiché (devolução)
+    - Fila única (um de cada vez)
+    - Prioridades: não há prioridades
+
+Fila dos carros
+    - Fila única (um de cada vez)
+    - Organização: 1 semáforo (com valor 5) para cada carro
+        - Preenchimento:
+			*isto só se aplica às 20 primeiras pessoas*
+            - Uma criança tem que andar no mesmo carro que um adulto da família
+            - (Se possível) os adultos-não-idosos são colocados nos carros mais à frente
+            - (Se possível) os idosos são colocados nos carros mais atrás
+            - (Se possível) as famílias são colocados nos carros mais a meio
+
+### SEMÁFOROS ###
+1) Guiché-compra (máx. 1)
+	2) Guiché-compra-prioritários (máx. XXX)
+	3) Guiché-compra-não prioritários (máx. XXX)
+4) Guiché-devolução (máx. 1)
+5) Carro 1 (máx. 5)
+6) Carro 2 (máx. 5)
+7) Carro 3 (máx. 5)
+8) Carro 4 (máx. 5)
